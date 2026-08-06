@@ -157,7 +157,7 @@
 
             const theme = colors[type] || colors.info;
             
-            toast.className = 'v39-toast';
+            toast.className = 'V39-toast';
             toast.style.cssText = `
                 margin-bottom: 10px; padding: 12px 18px; 
                 background: ${theme.bg}; backdrop-filter: blur(12px); 
@@ -166,7 +166,7 @@
                 border-radius: 8px; color: white; font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; 
                 font-size: 11px; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
                 display: flex; align-items: center; gap: 12px; pointer-events: auto; 
-                animation: v39-toast-in 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+                animation: V39-toast-in 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
                 min-width: 250px; text-transform: uppercase; letter-spacing: 0.5px;
             `;
 
@@ -174,7 +174,7 @@
             container.appendChild(toast);
 
             setTimeout(() => {
-                toast.style.animation = 'v39-toast-out 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards';
+                toast.style.animation = 'V39-toast-out 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards';
                 setTimeout(() => toast.remove(), 400);
             }, duration);
         },
@@ -189,14 +189,14 @@
          * Injects necessary CSS animations if missing.
          */
         _ensureContainer: () => {
-            let container = document.getElementById('v39-notif-container');
+            let container = document.getElementById('V39-notif-container');
             if (!container) {
                 container = document.createElement('div');
-                container.id = 'v39-notif-container';
+                container.id = 'V39-notif-container';
                 container.style.cssText = "position: fixed; top: 20px; right: 20px; z-index: 9999999; display: flex; flex-direction: column; align-items: flex-end; pointer-events: none;";
                 document.body.appendChild(container);
                 const style = document.createElement('style');
-                style.textContent = `@keyframes v39-toast-in { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } } @keyframes v39-toast-out { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }`;
+                style.textContent = `@keyframes V39-toast-in { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } } @keyframes V39-toast-out { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }`;
                 document.head.appendChild(style);
             }
             return container;
