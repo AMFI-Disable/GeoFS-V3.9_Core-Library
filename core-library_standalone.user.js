@@ -115,7 +115,7 @@
 // @icon                https://geofs-assets.evengao6688.workers.dev/icons/core-library.png
 
 // @namespace           https://greasyfork.org/users/1594049
-// @version             2.0.0
+// @version             2.0.1
 // @author              _init
 // @match               https://www.geo-fs.com/geofs.php*
 // @grant               none
@@ -124,8 +124,8 @@
 // @updateURL https://update.greasyfork.org/scripts/581510/GeoFS-V39_Core-Library.meta.js
 // ==/UserScript==
 
-(function() {
-    'use strict';
+(() => {
+    
 
     // Physical Constants: Standardized conversion coefficients
     window.DEGREES_TO_RAD = window.DEGREES_TO_RAD || 0.017453292519943295;
@@ -163,7 +163,7 @@
                 background: ${theme.bg}; backdrop-filter: blur(12px); 
                 border: 1px solid rgba(255,255,255,0.1); 
                 border-left: 4px solid ${theme.border}; 
-                border-radius: 8px; color: white; font-family: 'Inter', sans-serif; 
+                border-radius: 8px; color: white; font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; 
                 font-size: 11px; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
                 display: flex; align-items: center; gap: 12px; pointer-events: auto; 
                 animation: v39-toast-in 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
@@ -188,7 +188,7 @@
          * Ensures the global toast container exists in the DOM.
          * Injects necessary CSS animations if missing.
          */
-        _ensureContainer: function() {
+        _ensureContainer: () => {
             let container = document.getElementById('v39-notif-container');
             if (!container) {
                 container = document.createElement('div');
@@ -212,7 +212,7 @@
      * @param {function} func - Executable module logic
      * @param {boolean} silent - Suppresses initialization-start alerts
      */
-    window.SafeInit = function(moduleName, func, silent = true) {
+    window.SafeInit = (moduleName, func, silent = true) => {
         console.info(`[GeoFS-V3.9_Core-Library] >> [MODULE] Initializing: ${moduleName}`);
         if (!silent) window.V39_NOTIF.info(`Initializing ${moduleName}...`);
         try {
@@ -230,7 +230,7 @@
      * Manages the unified, glassmorphic HUD panel used by all standalone modules.
      * Features self-healing DOM restoration and prioritized Z-stack management.
      */
-    window.ensureSharedHUD = function() {
+    window.ensureSharedHUD = () => {
         if (globalThis.hudProVisible === undefined) globalThis.hudProVisible = true;
         if (globalThis.hudProMinimized === undefined) globalThis.hudProMinimized = false;
 
@@ -321,8 +321,8 @@
         // Self-Healing Lifecycle Loop: DOM integrity monitoring
         if (!window._hudVisibilityLoop) {
             window._hudVisibilityLoop = setInterval(() => {
-                let btn = document.getElementById('hudMinimizeBtn');
-                let p = document.getElementById('flightDataDisplay');
+                const btn = document.getElementById('hudMinimizeBtn');
+                const p = document.getElementById('flightDataDisplay');
                 
                 // Integrity check: Restoration on accidental deletion
                 if (!btn || !p) {
@@ -349,7 +349,7 @@
      * 
      * @param {string} activeTabId - Target tab identifier
      */
-    window.switchHUDProTab = function(activeTabId) {
+    window.switchHUDProTab = (activeTabId) => {
         const p = document.getElementById('flightDataDisplay');
         if (!p) return;
         
@@ -373,7 +373,7 @@
      * registerHUDTab: Primary Module Integration Endpoint
      * Standardized method for standalone modules to inject their UI into the unified panel.
      */
-    window.registerHUDTab = function(tabId, label, contentHTML, isGrid) {
+    window.registerHUDTab = (tabId, label, contentHTML, isGrid) => {
         console.log(`[GeoFS-Core] >> Attempting to register tab: ${tabId} (${label})`);
         window.ensureSharedHUD();
         const tabsContainer = document.getElementById('hud-unified-tabs');
@@ -415,15 +415,13 @@
      * hudCell: UI Generation Utility
      * Generates a standardized, high-density data cell for HUD content.
      */
-    window.hudCell = function(label, value, warnClass, idClass) { 
-        return `<div class="hud-cell"><span class="hud-label">${label}</span><span class="hud-value ${idClass || ''} ${warnClass || ''}">${value}</span></div>`; 
-    };
+    window.hudCell = (label, value, warnClass, idClass) => `<div class="hud-cell"><span class="hud-label">${label}</span><span class="hud-value ${idClass || ''} ${warnClass || ''}">${value}</span></div>`;
 
     /**
      * initAddonDraggable: UX Persistence Handler
      * Implements coordinate-based persistence via localStorage with screen boundary constraints.
      */
-    window.initAddonDraggable = function(card, storageKey) {
+    window.initAddonDraggable = (card, storageKey) => {
         if (!card) return;
         let isDragging = false, dragMoved = false, dragOffsetX = 0, dragOffsetY = 0;
         
