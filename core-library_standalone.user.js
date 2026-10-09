@@ -51,57 +51,57 @@
 // @name:lo             GeoFS-V3.9_ຫໍສະໝຸດຫຼັກ
 // @name:ur             GeoFS-V3.9_کور-لائبریری
 
-// @description         The foundational API for the GeoFS-V3.9 ecosystem, providing secure initialization and standardized communication for all modular components. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:vi      API nền tảng cho hệ sinh thái GeoFS-V3.9, cung cấp khả năng khởi tạo an toàn và giao tiếp được tiêu chuẩn hóa cho tất cả các thành phần mô-đun. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:zh-CN   GeoFS-V3.9 生态系统的基础 API，为所有模块化组件提供安全初始化和标准化通信。 © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:zh-TW   GeoFS-V3.9 生態系統的基礎 API，為所有模組化元件提供安全初始化和標準化通訊。 © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:ja      GeoFS-V3.9 エコシステムの基本 API で、すべてのモジュラー コンポーネントに安全な初期化と標準化された通信を提供します。 © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:ko      GeoFS-V3.9 생태계를 위한 기본 API로, 모든 모듈식 구성 요소에 대한 보안 초기화 및 표준화된 통신을 제공합니다. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:fr      L'API fondamentale de l'écosystème GeoFS-V3.9, fournissant une initialisation sécurisée et une communication standardisée pour tous les composants modulaires. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:de      Die grundlegende API für das GeoFS-V3.9-Ökosystem, die sichere Initialisierung und standardisierte Kommunikation für alle modularen Komponenten bietet. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:es      La API fundamental para el ecosistema GeoFS-V3.9, que proporciona inicialización segura y comunicación estandarizada para todos los componentes modulares. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:pt-BR   A API fundamental para o ecossistema GeoFS-V3.9, fornecendo inicialização segura e comunicação padronizada para todos os componentes modulares. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:pt-PT   A API fundamental para o ecossistema GeoFS-V3.9, proporcionando uma inicialização segura e uma comunicação padronizada para todos os componentes modulares. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:ru      Базовый API для экосистемы GeoFS-V3.9, обеспечивающий безопасную инициализацию и стандартизированную связь для всех модульных компонентов. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:ar      واجهة برمجة التطبيقات الأساسية للنظام البيئي GeoFS-V3.9، مما يوفر تهيئة آمنة واتصالًا موحدًا لجميع المكونات المعيارية. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:tr      GeoFS-V3.9 ekosisteminin temel API'si olup, tüm modüler bileşenler için güvenli başlatma ve standartlaştırılmış iletişim sağlar. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:id      API dasar untuk ekosistem GeoFS-V3.9, menyediakan inisialisasi aman dan komunikasi terstandarisasi untuk semua komponen modular. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:th      API พื้นฐานสำหรับระบบนิเวศ GeoFS-V3.9 ให้การเริ่มต้นที่ปลอดภัยและการสื่อสารที่เป็นมาตรฐานสำหรับส่วนประกอบโมดูลาร์ทั้งหมด © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:pl      Podstawowy interfejs API ekosystemu GeoFS-V3.9, zapewniający bezpieczną inicjalizację i standaryzowaną komunikację dla wszystkich komponentów modułowych. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:nl      De fundamentele API voor het GeoFS-V3.9-ecosysteem, die veilige initialisatie en gestandaardiseerde communicatie biedt voor alle modulaire componenten. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:it      L'API fondamentale per l'ecosistema GeoFS-V3.9, che fornisce un'inizializzazione sicura e una comunicazione standardizzata per tutti i componenti modulari. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:sv      Grundläggande API för GeoFS-V3.9-ekosystemet, ger säker initiering och standardiserad kommunikation för alla modulära komponenter. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:da      Det grundlæggende API for GeoFS-V3.9-økosystemet, der giver sikker initialisering og standardiseret kommunikation for alle modulære komponenter. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:fi      GeoFS-V3.9-ekosysteemin perustava API, joka tarjoaa turvallisen alustuksen ja standardoidun tiedonsiirron kaikille modulaarisille komponenteille. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:nb      Grunnleggende API for GeoFS-V3.9-økosystemet, gir sikker initialisering og standardisert kommunikasjon for alle modulære komponenter. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:cs      Základní API pro ekosystém GeoFS-V3.9 poskytující bezpečnou inicializaci a standardizovanou komunikaci pro všechny modulární komponenty. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:hu      A GeoFS-V3.9 ökoszisztéma alapozó API, amely biztonságos inicializálást és szabványos kommunikációt biztosít az összes moduláris komponens számára. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:ro      API-ul de bază pentru ecosistemul GeoFS-V3.9, care oferă inițializare sigură și comunicare standardizată pentru toate componentele modulare. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:uk      Основний API для екосистеми GeoFS-V3.9, що забезпечує безпечну ініціалізацію та стандартизований зв’язок для всіх модульних компонентів. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:hi      जियोएफएस-वी3.9 पारिस्थितिकी तंत्र के लिए मूलभूत एपीआई, सभी मॉड्यूलर घटकों के लिए सुरक्षित आरंभीकरण और मानकीकृत संचार प्रदान करता है। © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:bn      GeoFS-V3.9 ইকোসিস্টেমের জন্য ফাউন্ডেশনাল API, সমস্ত মডুলার উপাদানগুলির জন্য সুরক্ষিত সূচনা এবং প্রমিত যোগাযোগ প্রদান করে। © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:fa      API اساسی برای اکوسیستم GeoFS-V3.9، ارائه اولیه ایمن و ارتباطات استاندارد شده برای همه اجزای ماژولار. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:he      ה-API הבסיסי עבור המערכת האקולוגית GeoFS-V3.9, המספק אתחול מאובטח ותקשורת סטנדרטית עבור כל הרכיבים המודולריים. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:ms      API asas untuk ekosistem GeoFS-V3.9, menyediakan permulaan selamat dan komunikasi piawai untuk semua komponen modular. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:fil     Ang foundational API para sa GeoFS-V3.9 ecosystem, na nagbibigay ng secure na pagsisimula at standardized na komunikasyon para sa lahat ng modular na bahagi. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:el      Το θεμελιώδες API για το οικοσύστημα GeoFS-V3.9, που παρέχει ασφαλή αρχικοποίηση και τυποποιημένη επικοινωνία για όλα τα αρθρωτά στοιχεία. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:hr      Temeljni API za GeoFS-V3.9 ekosustav, koji pruža sigurnu inicijalizaciju i standardiziranu komunikaciju za sve modularne komponente. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:sk      Základné API pre ekosystém GeoFS-V3.9, ktoré poskytuje bezpečnú inicializáciu a štandardizovanú komunikáciu pre všetky modulárne komponenty. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:bg      Основополагащият API за екосистемата GeoFS-V3.9, осигуряващ сигурна инициализация и стандартизирана комуникация за всички модулни компоненти. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:sr      Основни АПИ за ГеоФС-В3.9 екосистем, који обезбеђује сигурну иницијализацију и стандардизовану комуникацију за све модуларне компоненте. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:lt      Pagrindinis „GeoFS-V3.9“ ekosistemos API, užtikrinantis saugų visų modulinių komponentų inicijavimą ir standartizuotą ryšį. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:lv      GeoFS-V3.9 ekosistēmas pamata API, kas nodrošina drošu inicializāciju un standartizētu komunikāciju visiem modulārajiem komponentiem. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:et      GeoFS-V3.9 ökosüsteemi põhiline API, mis pakub turvalist lähtestamist ja standardset sidet kõigi modulaarsete komponentide jaoks. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:sl      Temeljni API za ekosistem GeoFS-V3.9, ki zagotavlja varno inicializacijo in standardizirano komunikacijo za vse modularne komponente. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:ca      L'API fonamental per a l'ecosistema GeoFS-V3.9, que proporciona una inicialització segura i una comunicació estandarditzada per a tots els components modulars. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:af      Die grondliggende API vir die GeoFS-V3.9-ekosisteem, wat veilige inisialisering en gestandaardiseerde kommunikasie vir alle modulêre komponente bied. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:sw      API ya msingi ya mfumo ikolojia wa GeoFS-V3.9, inayotoa uanzishaji salama na mawasiliano sanifu kwa vipengele vyote vya moduli. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:zu      I-API eyisisekelo ye-GeoFS-V3.9 ecosystem, ehlinzeka ngokuqaliswa okuphephile nokuxhumana okujwayelekile kwazo zonke izingxenye zemojuli. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:mn      GeoFS-V3.9 экосистемийн үндсэн API нь бүх модульчлагдсан бүрэлдэхүүн хэсгүүдийн аюулгүй ажиллагааг эхлүүлэх, стандарт харилцаа холбоог хангадаг. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:my      GeoFS-V3.9 ဂေဟစနစ်အတွက် အခြေခံ API သည် လုံခြုံသောကနဦးပြုခြင်းနှင့် စံပြုဆက်သွယ်ရေးကို ပံ့ပိုးပေးသည့် မော်ဂျူလာအစိတ်အပိုင်းအားလုံးအတွက် ဖြစ်သည်။ © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:km      API មូលដ្ឋានសម្រាប់ប្រព័ន្ធអេកូ GeoFS-V3.9 ដែលផ្តល់នូវការចាប់ផ្តើមសុវត្ថិភាព និងការទំនាក់ទំនងស្តង់ដារសម្រាប់សមាសធាតុម៉ូឌុលទាំងអស់។ © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:lo      API ພື້ນຖານສໍາລັບລະບົບນິເວດ GeoFS-V3.9, ສະຫນອງການເລີ່ມຕົ້ນທີ່ປອດໄພແລະການສື່ສານມາດຕະຖານສໍາລັບອົງປະກອບ modular ທັງຫມົດ. © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
-// @description:ur      GeoFS-V3.9 ماحولیاتی نظام کے لیے بنیادی API، تمام ماڈیولر اجزاء کے لیے محفوظ آغاز اور معیاری مواصلات فراہم کرتا ہے۔ © 2026 _init. Part of the GeoFS-V3.9_Ecosystem.
+// @description         The foundational API for the GeoFS-V3.9 ecosystem, providing secure initialization and standardized communication for all modular components. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:vi      API nền tảng cho hệ sinh thái GeoFS-V3.9, cung cấp khả năng khởi tạo an toàn và giao tiếp được tiêu chuẩn hóa cho tất cả các thành phần mô-đun. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:zh-CN   GeoFS-V3.9 生态系统的基础 API，为所有模块化组件提供安全初始化和标准化通信。 © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:zh-TW   GeoFS-V3.9 生態系統的基礎 API，為所有模組化元件提供安全初始化和標準化通訊。 © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:ja      GeoFS-V3.9 エコシステムの基本 API で、すべてのモジュラー コンポーネントに安全な初期化と標準化された通信を提供します。 © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:ko      GeoFS-V3.9 생태계를 위한 기본 API로, 모든 모듈식 구성 요소에 대한 보안 초기화 및 표준화된 통신을 제공합니다. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:fr      L'API fondamentale de l'écosystème GeoFS-V3.9, fournissant une initialisation sécurisée et une communication standardisée pour tous les composants modulaires. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:de      Die grundlegende API für das GeoFS-V3.9-Ökosystem, die sichere Initialisierung und standardisierte Kommunikation für alle modularen Komponenten bietet. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:es      La API fundamental para el ecosistema GeoFS-V3.9, que proporciona inicialización segura y comunicación estandarizada para todos los componentes modulares. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:pt-BR   A API fundamental para o ecossistema GeoFS-V3.9, fornecendo inicialização segura e comunicação padronizada para todos os componentes modulares. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:pt-PT   A API fundamental para o ecossistema GeoFS-V3.9, proporcionando uma inicialização segura e uma comunicação padronizada para todos os componentes modulares. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:ru      Базовый API для экосистемы GeoFS-V3.9, обеспечивающий безопасную инициализацию и стандартизированную связь для всех модульных компонентов. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:ar      واجهة برمجة التطبيقات الأساسية للنظام البيئي GeoFS-V3.9، مما يوفر تهيئة آمنة واتصالًا موحدًا لجميع المكونات المعيارية. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:tr      GeoFS-V3.9 ekosisteminin temel API'si olup, tüm modüler bileşenler için güvenli başlatma ve standartlaştırılmış iletişim sağlar. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:id      API dasar untuk ekosistem GeoFS-V3.9, menyediakan inisialisasi aman dan komunikasi terstandarisasi untuk semua komponen modular. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:th      API พื้นฐานสำหรับระบบนิเวศ GeoFS-V3.9 ให้การเริ่มต้นที่ปลอดภัยและการสื่อสารที่เป็นมาตรฐานสำหรับส่วนประกอบโมดูลาร์ทั้งหมด © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:pl      Podstawowy interfejs API ekosystemu GeoFS-V3.9, zapewniający bezpieczną inicjalizację i standaryzowaną komunikację dla wszystkich komponentów modułowych. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:nl      De fundamentele API voor het GeoFS-V3.9-ecosysteem, die veilige initialisatie en gestandaardiseerde communicatie biedt voor alle modulaire componenten. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:it      L'API fondamentale per l'ecosistema GeoFS-V3.9, che fornisce un'inizializzazione sicura e una comunicazione standardizzata per tutti i componenti modulari. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:sv      Grundläggande API för GeoFS-V3.9-ekosystemet, ger säker initiering och standardiserad kommunikation för alla modulära komponenter. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:da      Det grundlæggende API for GeoFS-V3.9-økosystemet, der giver sikker initialisering og standardiseret kommunikation for alle modulære komponenter. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:fi      GeoFS-V3.9-ekosysteemin perustava API, joka tarjoaa turvallisen alustuksen ja standardoidun tiedonsiirron kaikille modulaarisille komponenteille. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:nb      Grunnleggende API for GeoFS-V3.9-økosystemet, gir sikker initialisering og standardisert kommunikasjon for alle modulære komponenter. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:cs      Základní API pro ekosystém GeoFS-V3.9 poskytující bezpečnou inicializaci a standardizovanou komunikaci pro všechny modulární komponenty. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:hu      A GeoFS-V3.9 ökoszisztéma alapozó API, amely biztonságos inicializálást és szabványos kommunikációt biztosít az összes moduláris komponens számára. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:ro      API-ul de bază pentru ecosistemul GeoFS-V3.9, care oferă inițializare sigură și comunicare standardizată pentru toate componentele modulare. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:uk      Основний API для екосистеми GeoFS-V3.9, що забезпечує безпечну ініціалізацію та стандартизований зв’язок для всіх модульних компонентів. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:hi      जियोएफएस-वी3.9 पारिस्थितिकी तंत्र के लिए मूलभूत एपीआई, सभी मॉड्यूलर घटकों के लिए सुरक्षित आरंभीकरण और मानकीकृत संचार प्रदान करता है। © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:bn      GeoFS-V3.9 ইকোসিস্টেমের জন্য ফাউন্ডেশনাল API, সমস্ত মডুলার উপাদানগুলির জন্য সুরক্ষিত সূচনা এবং প্রমিত যোগাযোগ প্রদান করে। © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:fa      API اساسی برای اکوسیستم GeoFS-V3.9، ارائه اولیه ایمن و ارتباطات استاندارد شده برای همه اجزای ماژولار. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:he      ה-API הבסיסי עבור המערכת האקולוגית GeoFS-V3.9, המספק אתחול מאובטח ותקשורת סטנדרטית עבור כל הרכיבים המודולריים. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:ms      API asas untuk ekosistem GeoFS-V3.9, menyediakan permulaan selamat dan komunikasi piawai untuk semua komponen modular. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:fil     Ang foundational API para sa GeoFS-V3.9 ecosystem, na nagbibigay ng secure na pagsisimula at standardized na komunikasyon para sa lahat ng modular na bahagi. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:el      Το θεμελιώδες API για το οικοσύστημα GeoFS-V3.9, που παρέχει ασφαλή αρχικοποίηση και τυποποιημένη επικοινωνία για όλα τα αρθρωτά στοιχεία. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:hr      Temeljni API za GeoFS-V3.9 ekosustav, koji pruža sigurnu inicijalizaciju i standardiziranu komunikaciju za sve modularne komponente. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:sk      Základné API pre ekosystém GeoFS-V3.9, ktoré poskytuje bezpečnú inicializáciu a štandardizovanú komunikáciu pre všetky modulárne komponenty. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:bg      Основополагащият API за екосистемата GeoFS-V3.9, осигуряващ сигурна инициализация и стандартизирана комуникация за всички модулни компоненти. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:sr      Основни АПИ за ГеоФС-В3.9 екосистем, који обезбеђује сигурну иницијализацију и стандардизовану комуникацију за све модуларне компоненте. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:lt      Pagrindinis „GeoFS-V3.9“ ekosistemos API, užtikrinantis saugų visų modulinių komponentų inicijavimą ir standartizuotą ryšį. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:lv      GeoFS-V3.9 ekosistēmas pamata API, kas nodrošina drošu inicializāciju un standartizētu komunikāciju visiem modulārajiem komponentiem. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:et      GeoFS-V3.9 ökosüsteemi põhiline API, mis pakub turvalist lähtestamist ja standardset sidet kõigi modulaarsete komponentide jaoks. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:sl      Temeljni API za ekosistem GeoFS-V3.9, ki zagotavlja varno inicializacijo in standardizirano komunikacijo za vse modularne komponente. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:ca      L'API fonamental per a l'ecosistema GeoFS-V3.9, que proporciona una inicialització segura i una comunicació estandarditzada per a tots els components modulars. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:af      Die grondliggende API vir die GeoFS-V3.9-ekosisteem, wat veilige inisialisering en gestandaardiseerde kommunikasie vir alle modulêre komponente bied. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:sw      API ya msingi ya mfumo ikolojia wa GeoFS-V3.9, inayotoa uanzishaji salama na mawasiliano sanifu kwa vipengele vyote vya moduli. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:zu      I-API eyisisekelo ye-GeoFS-V3.9 ecosystem, ehlinzeka ngokuqaliswa okuphephile nokuxhumana okujwayelekile kwazo zonke izingxenye zemojuli. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:mn      GeoFS-V3.9 экосистемийн үндсэн API нь бүх модульчлагдсан бүрэлдэхүүн хэсгүүдийн аюулгүй ажиллагааг эхлүүлэх, стандарт харилцаа холбоог хангадаг. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:my      GeoFS-V3.9 ဂေဟစနစ်အတွက် အခြေခံ API သည် လုံခြုံသောကနဦးပြုခြင်းနှင့် စံပြုဆက်သွယ်ရေးကို ပံ့ပိုးပေးသည့် မော်ဂျူလာအစိတ်အပိုင်းအားလုံးအတွက် ဖြစ်သည်။ © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:km      API មូលដ្ឋានសម្រាប់ប្រព័ន្ធអេកូ GeoFS-V3.9 ដែលផ្តល់នូវការចាប់ផ្តើមសុវត្ថិភាព និងការទំនាក់ទំនងស្តង់ដារសម្រាប់សមាសធាតុម៉ូឌុលទាំងអស់។ © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:lo      API ພື້ນຖານສໍາລັບລະບົບນິເວດ GeoFS-V3.9, ສະຫນອງການເລີ່ມຕົ້ນທີ່ປອດໄພແລະການສື່ສານມາດຕະຖານສໍາລັບອົງປະກອບ modular ທັງຫມົດ. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
+// @description:ur      GeoFS-V3.9 ماحولیاتی نظام کے لیے بنیادی API، تمام ماڈیولر اجزاء کے لیے محفوظ آغاز اور معیاری مواصلات فراہم کرتا ہے۔ © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
 
 // @homepageURL         https://sites.google.com/view/geofs-v39-ecosystem/home
 // @connect             greasyfork.org
@@ -111,12 +111,12 @@
 // @compatible          safari
 // @compatible          brave
 // @compatible          opera
-// @copyright           2026, _init (https://greasyfork.org/users/1594049)
+// @copyright           2026, AMFI-Disable (https://greasyfork.org/users/1594049)
 // @icon                https://geofs-assets.evengao6688.workers.dev/icons/core-library.png
 
 // @namespace           https://greasyfork.org/users/1594049
 // @version             2.0.1
-// @author              _init
+// @author              AMFI-Disable
 // @match               https://www.geo-fs.com/geofs.php*
 // @grant               none
 // @license             MIT
