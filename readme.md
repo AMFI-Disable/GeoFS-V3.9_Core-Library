@@ -6,6 +6,18 @@
 
 The foundational logic layer for the **GeoFS-V3.9** ecosystem. This library provides the shared utilities, error-handling wrappers, and interactive helpers that power every module in the suite. It is built for maximum stability and performance.
 
+---
+
+## ⚖️ Educational & Fair-Play Disclaimer
+
+> [!CAUTION]
+> **IMPORTANT NOTICE & DISCLAIMER**:
+> This codebase is provided strictly for educational, research, and testing purposes in authorized environments.
+> Using automated assistance or unauthorized scripts in violation of platform terms of service or anti-cheat policies may lead to account penalties.
+> The developers and contributors accept no responsibility or liability for misuse of this software.
+
+---
+
 ## ✨ Features
 
 - **🛡️ SafeInit Wrapper**: A robust initialization system that ensures module errors never crash the entire addon suite.
