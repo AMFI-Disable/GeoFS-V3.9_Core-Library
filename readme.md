@@ -1,37 +1,25 @@
-# **GeoFS-V3.9**_Core-Library
+# GeoFS-V3.9_Core-Library
 
-![Version](https://img.shields.io/badge/Version-V2.0.1-3b82f6?style=flat-square&logo=git&logoColor=white)
-![Ecosystem](https://img.shields.io/badge/GeoFS--V3.9-Core_Library-3b82f6?style=flat-square&logo=javascript&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Stable-10b981?style=flat-square&logo=lighthouse&logoColor=white)
+![Version](https://img.shields.io/badge/Version-v3.9.0-3b82f6?style=flat-square)
 
-The foundational logic layer for the **GeoFS-V3.9** ecosystem. This library provides the shared utilities, error-handling wrappers, and interactive helpers that power every module in the suite. It is built for maximum stability and performance.
+Provides shared initialization, notification, HUD, and utility functions for the GeoFS-V3.9 scripts.
 
----
+## Features
 
-## ⚖️ Educational & Fair-Play Disclaimer
+- The **GeoFS-V3.9_Ecosystem** startup panel closes when all add-ons are detected. If any are missing or fail to start, it stays open and identifies them; select × to dismiss it. Runtime messages appear as separate temporary banners.
+- Add-ons that are not detected may be uninstalled, disabled, still loading, or unable to start.
+- Provides the shared HUD tabs and initialization error handling used by other scripts.
 
-> [!CAUTION]
-> **IMPORTANT NOTICE & DISCLAIMER**:
-> This codebase is provided strictly for educational, research, and testing purposes in authorized environments.
-> Using automated assistance or unauthorized scripts in violation of platform terms of service or anti-cheat policies may lead to account penalties.
-> The developers and contributors accept no responsibility or liability for misuse of this software.
+## Installation
 
----
+1. Install a userscript manager such as [Tampermonkey](https://www.tampermonkey.net/).
+2. Install or update the script from [Greasy Fork](https://greasyfork.org/en/scripts/581510-geofs-v3-9-core-library).
+3. Open or reload GeoFS V3.9. The script starts automatically.
 
-## ✨ Features
+The script activates only when GeoFS reports version V3.9 (including V3.9 patch releases). It waits for the version to become available and remains inactive on other versions. Most standalone scripts load the Core Library and Design System as dependencies; the userscript manager handles those dependencies.
 
-- **🛡️ SafeInit Wrapper**: A robust initialization system that ensures module errors never crash the entire addon suite.
-- **🖱️ Universal Draggable UI**: High-fidelity utility that allows any DOM element to be moved and its position persisted safely.
-- **📐 Mathematical Constants**: Shared, high-precision constants for aeronautical unit conversions (Knot/Meter/Rad/Deg).
-- **📱 Universal Resize Handler**: Automatically re-calculates UI positions during window resizing to maintain layout integrity.
-- **🚀 CDN Loader Architecture**: Automatically updates to ensure you always have the latest core utility features.
+A script listed as not detected may be uninstalled, disabled, or still loading.
 
-## 🛠️ Installation
+## License
 
-### Standalone (Tampermonkey)
-
-1. Install the [Tampermonkey](https://www.tampermonkey.net/) extension.
-2. Install the script via [**Greasy Fork**](https://greasyfork.org/en/scripts/581510-geofs-v3-9-core-library).
-3. This module acts as a dependency/visual base and runs automatically in the background to assist other modules.
-
-*© 2026 AMFI-Disable. Part of the [**GeoFS-V3.9**_Ecosystem](https://sites.google.com/view/geofs-v39-ecosystem/home).*
+[MIT](license) · © 2026 AMFI-Disable · [GeoFS-V3.9 Ecosystem](https://sites.google.com/view/geofs-v39-ecosystem/home)

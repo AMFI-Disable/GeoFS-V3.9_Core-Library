@@ -50,7 +50,6 @@
 // @name:km             GeoFS-V3.9_បណ្ណាល័យស្នូល
 // @name:lo             GeoFS-V3.9_ຫໍສະໝຸດຫຼັກ
 // @name:ur             GeoFS-V3.9_کور-لائبریری
-
 // @description         The foundational API for the GeoFS-V3.9 ecosystem, providing secure initialization and standardized communication for all modular components. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
 // @description:vi      API nền tảng cho hệ sinh thái GeoFS-V3.9, cung cấp khả năng khởi tạo an toàn và giao tiếp được tiêu chuẩn hóa cho tất cả các thành phần mô-đun. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
 // @description:zh-CN   GeoFS-V3.9 生态系统的基础 API，为所有模块化组件提供安全初始化和标准化通信。 © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
@@ -103,44 +102,69 @@
 // @description:lo      API ພື້ນຖານສໍາລັບລະບົບນິເວດ GeoFS-V3.9, ສະຫນອງການເລີ່ມຕົ້ນທີ່ປອດໄພແລະການສື່ສານມາດຕະຖານສໍາລັບອົງປະກອບ modular ທັງຫມົດ. © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
 // @description:ur      GeoFS-V3.9 ماحولیاتی نظام کے لیے بنیادی API، تمام ماڈیولر اجزاء کے لیے محفوظ آغاز اور معیاری مواصلات فراہم کرتا ہے۔ © 2026 AMFI-Disable. Part of the GeoFS-V3.9_Ecosystem.
 
+// @namespace           https://greasyfork.org/users/1594049
+// @version             3.9.0
+// @author              AMFI-Disable
 // @homepageURL         https://sites.google.com/view/geofs-v39-ecosystem/home
-// @connect             greasyfork.org
+// @icon                https://www.geo-fs.com/images/icons/favicon.ico
+// @match               https://www.geo-fs.com/geofs.php*
+// @grant               none
+// @license             MIT
+// @copyright           2026, AMFI-Disable (https://greasyfork.org/users/1594049)
 // @compatible          chrome
 // @compatible          firefox
 // @compatible          edge
 // @compatible          safari
 // @compatible          brave
 // @compatible          opera
-// @copyright           2026, AMFI-Disable (https://greasyfork.org/users/1594049)
-// @icon                https://www.geo-fs.com/images/icons/favicon.ico
-
-// @namespace           https://greasyfork.org/users/1594049
-// @version             2.0.6
-// @author              AMFI-Disable
-// @match               https://www.geo-fs.com/geofs.php*
-// @grant               none
-// @license             MIT
-// @downloadURL https://update.greasyfork.org/scripts/581510/GeoFS-V39_Core-Library.user.js
-// @updateURL https://update.greasyfork.org/scripts/581510/GeoFS-V39_Core-Library.meta.js
 // ==/UserScript==
+
+// Wait for GeoFS to report its version before executing any module code.
+// Unknown, older, and newer versions never activate this V3.9 release.
+(function waitForGeoFSVersion() {
+    const version = window.geofs?.version;
+    if (version === undefined || version === null || version === '') {
+        setTimeout(waitForGeoFSVersion, 250);
+        return;
+    }
+    if (!/^(?:v)?3\.9(?:\.\d+)*$/i.test(String(version).trim())) {
+        console.warn('[GeoFS-V3.9_Core-Library] Inactive: GeoFS ' + version + ' is not V3.9.');
+        return;
+    }
+
 
 (() => {
     /**
      * Runtime Version Guard: GeoFS-V3.9 Suite Compatibility
-     * Ensures this core library only executes on GeoFS v3.9 or earlier, and gracefully
-     * deactivates if GeoFS v4.0+ is detected.
+     * Allows this core library to execute only when GeoFS reports version 3.9.
      */
     function isUnsupportedGeoFS() {
         const raw = window.geofs?.version;
-        if (raw === undefined || raw === null) return false;
-        const clean = typeof raw === 'string' ? raw.replace(/^[^\d.]*/, '') : raw;
-        const num = typeof clean === 'number' ? clean : parseFloat(clean);
-        return !isNaN(num) && num >= 4.0;
+        return !/^(?:v)?3\.9(?:\.\d+)*$/i.test(String(raw ?? '').trim());
     }
 
     if (isUnsupportedGeoFS()) {
-        console.warn("[GeoFS-V3.9_Core-Library] Inactive: GeoFS v" + window.geofs?.version + " detected (suite only supports GeoFS v3.9 and earlier).");
+        console.warn("[GeoFS-V3.9_Core-Library] Inactive: GeoFS v" + window.geofs?.version + " detected (suite only supports GeoFS v3.9).");
         return;
+    }
+
+    // Cached older dependencies can still create the original emoji startup toast.
+    // Remove only that legacy Core message, even if the old dependency runs later.
+    if (!window.__v39LegacyCoreToastObserver && document.documentElement) {
+        const removeLegacyCoreToast = root => {
+            if (!(root instanceof Element)) return;
+            const candidates = root.matches('.v39-toast') ? [root] : root.querySelectorAll('.v39-toast');
+            for (const toast of candidates) {
+                if (toast.closest('#v39-notif-container') &&
+                    /GeoFS-V3\.9_Core-Library\s+Loaded\./i.test(toast.textContent)) toast.remove();
+            }
+        };
+        removeLegacyCoreToast(document.documentElement);
+        const observer = new MutationObserver(records => {
+            for (const record of records) for (const node of record.addedNodes) removeLegacyCoreToast(node);
+        });
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+        window.__v39LegacyCoreToastObserver = observer;
     }
 
     // Physical Constants: Standardized conversion coefficients
@@ -148,83 +172,104 @@
     window.RAD_TO_DEGREES = window.RAD_TO_DEGREES || 57.29577951308232;
     window.METERS_TO_FEET = window.METERS_TO_FEET || 3.280839895;
 
-    /**
-     * V39_NOTIF: Singleton UI Notification Engine
-     * Orchestrates high-fidelity glassmorphic toast alerts with queue management.
-     */
-    window.V39_NOTIF = window.V39_NOTIF || {
-        /**
-         * Dispatches a new notification toast to the global container.
-         * 
-         * @param {string} text - The message to display (automatically uppercased).
-         * @param {string} [type='info'] - info | success | warn | critical (determines border color and icon).
-         * @param {number} [duration=4000] - Lifespan of the toast in milliseconds.
-         */
-        show: function(text, type = 'info', duration = 4000) {
-            // Dependencies may initialize multiple times; combine only routine startup messages.
-            if (type === 'success' && /^GeoFS-V3\.9_.+\bLoaded\.$/i.test(text)) {
-                if (!window._v39ReadyNoticeScheduled) {
-                    window._v39ReadyNoticeScheduled = true;
-                    setTimeout(() => this.show('GeoFS-V3.9 ready', 'info', 2500), 1500);
-                }
-                return;
-            }
-            const container = this._ensureContainer();
-            const toast = document.createElement('div');
-            
-            const colors = {
-                info: { border: '#dddddd', bg: 'rgba(26,26,26,0.9)', icon: '📋' },
-                success: { border: '#10b981', bg: 'rgba(10,35,25,0.9)', icon: '✅' },
-                warn: { border: '#fbbf24', bg: 'rgba(35,30,10,0.9)', icon: '⚠️' },
-                critical: { border: '#ef4444', bg: 'rgba(35,10,10,0.9)', icon: '🔥' }
-            };
-
-            const theme = colors[type] || colors.info;
-            
-            toast.className = 'V39-toast';
-            toast.style.cssText = `
-                margin-bottom: 6px; padding: 7px 12px; 
-                background: ${theme.bg}; backdrop-filter: blur(12px); 
-                border: 1px solid ${theme.border}; 
-                border-radius: 15px; color: white; font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; 
-                font-size: 11px; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
-                display: flex; align-items: center; gap: 12px; pointer-events: auto; 
-                animation: V39-toast-in 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-                max-width: 320px;
-            `;
-
-            toast.textContent = text;
-            container.appendChild(toast);
-
-            setTimeout(() => {
-                toast.style.animation = 'V39-toast-out 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards';
-                setTimeout(() => toast.remove(), 400);
-            }, duration);
-        },
-
-        info: function(t) { this.show(t, 'info'); },
-        success: function(t) { this.show(t, 'success'); },
-        warn: function(t) { this.show(t, 'warn'); },
-        critical: function(t) { this.show(t, 'critical'); },
-
-        /**
-         * Ensures the global toast container exists in the DOM.
-         * Injects necessary CSS animations if missing.
-         */
-        _ensureContainer: () => {
-            let container = document.getElementById('V39-notif-container');
-            if (!container) {
-                container = document.createElement('div');
-                container.id = 'V39-notif-container';
-                container.style.cssText = "position: fixed; top: 20px; right: 20px; z-index: 9999999; display: flex; flex-direction: column; align-items: flex-end; pointer-events: none;";
-                document.body.appendChild(container);
-                const style = document.createElement('style');
-                style.textContent = `@keyframes V39-toast-in { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } } @keyframes V39-toast-out { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }`;
-                document.head.appendChild(style);
-            }
-            return container;
+    /** Startup status and independent in-flight notification banners. */
+    window.V39_NOTIF = window.V39_NOTIF?._v39StartupV2 ? window.V39_NOTIF : (() => {
+        document.getElementById('V39-notif-container')?.remove();
+        const modules = ['Core-Library', 'Design-System', 'Information-Display', 'Checklist-System',
+            'Fuel-Simulator', 'Failure-Simulator', 'Realism-Pack', 'Landing-Statistics',
+            'Flight-Path-Vector', 'Autothrottle', 'Overpowered-Engines', 'Satellite-Imagery'];
+        const states = new Map();
+        let panel, details, banners, dismissTimer, closed = false, startup = true;
+        const nameOf = text => {
+            const match = String(text).match(/GeoFS-V3\.9_([\w-]+)/i);
+            return match && modules.find(name => name.toLowerCase() === match[1].toLowerCase());
+        };
+        function ensurePanel() {
+            if (panel?.isConnected || !document.body) return;
+            panel = document.createElement('section');
+            panel.id = 'V39-notif-container';
+            panel.setAttribute('aria-label', 'GeoFS add-on startup status');
+            panel.setAttribute('role', 'status');
+            panel.style.cssText = 'position:fixed;top:20px;right:20px;z-index:9999999;width:min(320px,calc(100vw - 40px));box-sizing:border-box;padding:12px;background:rgba(40,40,40,.96);border:1px solid #777;border-radius:4px;color:#eee;font:13px Arial,sans-serif;box-shadow:0 2px 8px #0008;';
+            const row = document.createElement('div');
+            row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:12px;';
+            const heading = document.createElement('strong'); heading.textContent = 'GeoFS-V3.9_Ecosystem';
+            const close = document.createElement('button');
+            close.textContent = '×'; close.type = 'button'; close.setAttribute('aria-label', 'Dismiss add-on status');
+            close.style.cssText = 'border:0;background:transparent;color:inherit;font-size:20px;cursor:pointer;line-height:1;';
+            close.addEventListener('click', () => { closed = true; panel.remove(); clearTimeout(dismissTimer); });
+            row.append(heading, close); panel.appendChild(row);
+            details = document.createElement('div'); details.style.cssText = 'margin-top:8px;line-height:1.5;overflow-wrap:anywhere;white-space:pre-line;'; panel.appendChild(details);
+            document.body.appendChild(panel);
         }
-    };
+        function scanModules() {
+            const checks = {
+                'Core-Library': () => !!window.SafeInit,
+                'Design-System': () => !!document.getElementById('geofs-design-system'),
+                'Information-Display': () => !!window.initHUDInformationDisplayPro,
+                'Checklist-System': () => !!window.initChecklistSystem,
+                'Fuel-Simulator': () => !!window.initFuelSimulatorPro,
+                'Failure-Simulator': () => !!window.initFailures,
+                'Realism-Pack': () => !!window.initRealismPackPro,
+                'Landing-Statistics': () => !!window.initLandingStats,
+                'Flight-Path-Vector': () => typeof window.howFar !== 'undefined',
+                'Autothrottle': () => !!window.geofs?.autothrottle,
+                'Overpowered-Engines': () => !!window.overpoweredEnginesSuite,
+                'Satellite-Imagery': () => String(window.geofs?.api?.imageryProvider?._resource?.url || '').includes('ibasemaps-api.arcgis.com')
+            };
+            for (const [name, check] of Object.entries(checks)) {
+                try { if (check() && !states.has(name)) states.set(name, 'ready'); } catch (_) {}
+            }
+        }
+        function render() {
+            if (closed) return;
+            scanModules(); ensurePanel(); if (!panel) return;
+            const ready = modules.filter(name => states.get(name) === 'ready');
+            const failed = modules.filter(name => states.get(name) === 'failed');
+            const unknown = modules.filter(name => !states.has(name));
+            details.textContent = `${startup ? 'Starting · ' : ''}${ready.length} of ${modules.length} detected` +
+                (failed.length ? `\nFailed to start: ${failed.join(', ')}` : '') +
+                (!startup && unknown.length ? `\nNot detected (not installed, disabled, or still loading): ${unknown.join(', ')}` : '');
+            if (ready.length === modules.length && !dismissTimer) {
+                dismissTimer = setTimeout(() => { if (panel) panel.remove(); closed = true; }, 2000);
+            } else if (ready.length !== modules.length && dismissTimer) {
+                clearTimeout(dismissTimer); dismissTimer = null;
+            }
+        }
+        function banner(text, type, duration) {
+            if (!document.body) return;
+            if (!banners?.isConnected) {
+                banners = document.createElement('div');
+                banners.id = 'V39-notif-banners';
+                banners.setAttribute('aria-live', 'polite');
+                banners.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:9999999;display:flex;flex-direction:column;align-items:flex-end;gap:6px;pointer-events:none;';
+                document.body.appendChild(banners);
+            }
+            const item = document.createElement('div');
+            item.style.cssText = 'max-width:min(320px,calc(100vw - 40px));box-sizing:border-box;padding:10px 12px;background:rgba(40,40,40,.96);border:1px solid #777;border-radius:4px;color:#eee;font:13px Arial,sans-serif;box-shadow:0 2px 8px #0008;overflow-wrap:anywhere;';
+            item.textContent = String(text);
+            if (type === 'critical') item.style.color = '#ff8d8d';
+            else if (type === 'warn') item.style.color = '#ffd37a';
+            banners.appendChild(item);
+            setTimeout(() => { item.remove(); if (!banners.children.length) banners.remove(); }, Math.max(duration, type === 'critical' ? 10000 : 4000));
+        }
+        const api = {
+            _v39Unified: 210, _v39StartupV2: true,
+            show(text, type = 'info', duration = 4000) {
+                const module = nameOf(text);
+                if (module && /\bloaded\.$/i.test(text)) { states.set(module, 'ready'); render(); return; }
+                if (module && /boot failure\.$/i.test(text)) { states.set(module, 'failed'); render(); return; }
+                banner(text, type, duration);
+            },
+            info(t) { this.show(t, 'info'); }, success(t) { this.show(t, 'success'); },
+            warn(t) { this.show(t, 'warn'); }, critical(t) { this.show(t, 'critical'); },
+            status(name, state) { const module = nameOf(name); if (module) { states.set(module, state); render(); } }
+        };
+        render();
+        setTimeout(() => { startup = false; render(); }, 18000);
+        const scanTimer = setInterval(() => { if (closed) { clearInterval(scanTimer); return; } render(); }, 1000);
+        return api;
+    })();
 
     /**
      * Module Guard: Safe Initialization Lifecycle
@@ -237,7 +282,7 @@
      */
     window.SafeInit = (moduleName, func, silent = true) => {
         if (isUnsupportedGeoFS()) {
-            console.warn("[GeoFS-V3.9_Core-Library] >> [MODULE BLOCKED] " + moduleName + " disabled: GeoFS v" + window.geofs?.version + " detected (suite only supports GeoFS v3.9 and earlier).");
+            console.warn("[GeoFS-V3.9_Core-Library] >> [MODULE BLOCKED] " + moduleName + " disabled: GeoFS v" + window.geofs?.version + " detected (suite only supports GeoFS v3.9).");
             return;
         }
         console.info(`[GeoFS-V3.9_Core-Library] >> [MODULE] Initializing: ${moduleName}`);
@@ -536,7 +581,7 @@
     }
 
     console.log("[GeoFS-V3.9_Core-Library] >> Core foundations loaded and ready.");
-    if (window.V39_NOTIF) window.V39_NOTIF.success("GeoFS-V3.9_Core-Library Loaded.");
+    if (window.V39_NOTIF?.status) window.V39_NOTIF.status('GeoFS-V3.9_Core-Library', 'ready');
 
 /**
  * GeoFS-V3.9 Aircraft Technical Registry
@@ -615,4 +660,6 @@ window.AIRCRAFT_DATA = {
     "5791": { "name": "Lockheed C-5M Galaxy", "maxFlaps": 5, "hasGear": true, "hasSpoilers": true, "oew": 172370, "mtow": 381000, "maxFuel": 150800 },
     "5847": { "name": "Boeing 727-200", "maxFlaps": 8, "hasGear": true, "hasSpoilers": true, "oew": 45360, "mtow": 95000, "maxFuel": 30600 }
 };
+})();
+
 })();
