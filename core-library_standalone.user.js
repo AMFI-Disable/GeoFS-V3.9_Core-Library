@@ -112,10 +112,10 @@
 // @compatible          brave
 // @compatible          opera
 // @copyright           2026, AMFI-Disable (https://greasyfork.org/users/1594049)
-// @icon                https://geofs-assets.evengao6688.workers.dev/icons/core-library.png
+// @icon                https://www.geo-fs.com/images/icons/favicon.ico
 
 // @namespace           https://greasyfork.org/users/1594049
-// @version             2.0.1
+// @version             2.0.6
 // @author              AMFI-Disable
 // @match               https://www.geo-fs.com/geofs.php*
 // @grant               none
@@ -152,7 +152,7 @@
      * V39_NOTIF: Singleton UI Notification Engine
      * Orchestrates high-fidelity glassmorphic toast alerts with queue management.
      */
-    window.V39_NOTIF = {
+    window.V39_NOTIF = window.V39_NOTIF || {
         /**
          * Dispatches a new notification toast to the global container.
          * 
@@ -161,11 +161,19 @@
          * @param {number} [duration=4000] - Lifespan of the toast in milliseconds.
          */
         show: function(text, type = 'info', duration = 4000) {
+            // Dependencies may initialize multiple times; combine only routine startup messages.
+            if (type === 'success' && /^GeoFS-V3\.9_.+\bLoaded\.$/i.test(text)) {
+                if (!window._v39ReadyNoticeScheduled) {
+                    window._v39ReadyNoticeScheduled = true;
+                    setTimeout(() => this.show('GeoFS-V3.9 ready', 'info', 2500), 1500);
+                }
+                return;
+            }
             const container = this._ensureContainer();
             const toast = document.createElement('div');
             
             const colors = {
-                info: { border: '#ff9f05', bg: 'rgba(26,26,26,0.9)', icon: '📋' },
+                info: { border: '#dddddd', bg: 'rgba(26,26,26,0.9)', icon: '📋' },
                 success: { border: '#10b981', bg: 'rgba(10,35,25,0.9)', icon: '✅' },
                 warn: { border: '#fbbf24', bg: 'rgba(35,30,10,0.9)', icon: '⚠️' },
                 critical: { border: '#ef4444', bg: 'rgba(35,10,10,0.9)', icon: '🔥' }
@@ -175,18 +183,17 @@
             
             toast.className = 'V39-toast';
             toast.style.cssText = `
-                margin-bottom: 10px; padding: 12px 18px; 
+                margin-bottom: 6px; padding: 7px 12px; 
                 background: ${theme.bg}; backdrop-filter: blur(12px); 
-                border: 1px solid rgba(255,255,255,0.1); 
-                border-left: 4px solid ${theme.border}; 
-                border-radius: 8px; color: white; font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; 
+                border: 1px solid ${theme.border}; 
+                border-radius: 15px; color: white; font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; 
                 font-size: 11px; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
                 display: flex; align-items: center; gap: 12px; pointer-events: auto; 
                 animation: V39-toast-in 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-                min-width: 250px; text-transform: uppercase; letter-spacing: 0.5px;
+                max-width: 320px;
             `;
 
-            toast.innerHTML = `<span style="font-size: 14px;">${theme.icon}</span> <span>${text.toUpperCase()}</span>`;
+            toast.textContent = text;
             container.appendChild(toast);
 
             setTimeout(() => {
@@ -264,7 +271,7 @@
                     top: 100px;
                     right: 20px;
                     width: 250px;
-                    background: rgba(26, 26, 26, 0.9);
+                    background: rgba(0, 0, 0, 0.8);
                     border: 1px solid rgba(255, 255, 255, 0.12);
                     border-radius: 12px;
                     padding: 15px;
@@ -278,24 +285,24 @@
                     font-family: 'Roboto', sans-serif;
                     pointer-events: auto !important;
                 }
-                .hud-drag-handle { grid-column: 1 / -1; text-align: center; color: rgba(255, 159, 5, 0.3); font-size: 7.5px; letter-spacing: 2px; cursor: move; margin-bottom: 5px; text-transform: uppercase; }
+                .hud-drag-handle { grid-column: 1 / -1; text-align: center; color: rgba(255, 255, 255, 0.3); font-size: 10px; letter-spacing: 2px; cursor: move; margin-bottom: 5px; text-transform: uppercase; }
                 .unified-tabs { grid-column: 1 / -1; display: grid; gap: 3px; margin-bottom: 10px; }
-                .unified-tab { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); border-radius: 4px; font-size: 8px; padding: 4px; cursor: pointer; transition: all 0.2s; font-weight: 700; text-transform: uppercase; }
+                .unified-tab { background: rgba(255,255,255,0.05); border: 1px solid #888; color: rgba(255,255,255,0.6); border-radius: 4px; font-size: 10px; padding: 4px; cursor: pointer; transition: all 0.2s; font-weight: 700; text-transform: uppercase; }
                 .unified-tab:hover { background: rgba(255,255,255,0.1); }
-                .unified-tab.active { color: #ff9f05; border-color: #ff9f05; background: rgba(255, 159, 5, 0.15); }
+                .unified-tab.active { color: #dddddd; border-color: #dddddd; background: rgba(255, 255, 255, 0.15); }
                 .unified-content { display: none; padding: 10px; max-height: 400px; overflow-y: auto; }
                 .unified-content.active { display: block; }
                 .unified-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
                 #hudMinimizeBtn {
                     position: fixed; width: 40px; height: 40px; border-radius: 50%;
                     background: rgba(30, 30, 30, 0.9); backdrop-filter: blur(8px);
-                    border: 1px solid rgba(255, 255, 255, 0.15); color: #ff9f05;
+                    border: 1px solid rgba(255, 255, 255, 0.15); color: #dddddd;
                     display: flex; align-items: center; justify-content: center;
                     cursor: pointer; z-index: 220001; font-size: 18px; box-shadow: 0 5px 15px rgba(0,0,0,0.4);
                 }
                 .hud-cell { display: flex; flex-direction: column; }
-                .hud-label { font-size: 8px; color: #ff9f05; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.8; }
-                .hud-value { font-size: 13px; font-weight: 700; color: #fff; font-family: 'Roboto Mono', monospace; }
+                .hud-label { font-size: 10px; color: #dddddd; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.8; }
+                .hud-value { font-size: 13px; font-weight: 700; color: #fff; font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; }
             `;
             document.head.appendChild(style);
         }
@@ -409,10 +416,16 @@
             btn.className = 'unified-tab';
             btn.textContent = label;
             btn.onclick = () => window.switchHUDProTab(tabId);
-            tabsContainer.appendChild(btn);
-            tabsContainer.style.gridTemplateColumns = `repeat(${tabsContainer.children.length}, 1fr)`;
+            const tabOrder = ['id', 'fuel', 'checks', 'realism'];
+            const rank = id => {
+                const index = tabOrder.indexOf(id.replace(/^tab-btn-/, ''));
+                return index < 0 ? tabOrder.length : index;
+            };
+            const next = Array.from(tabsContainer.children).find(child => rank(child.id) > rank(btn.id));
+            tabsContainer.insertBefore(btn, next || null);
             console.log(`[GeoFS-Core] >> Created button for tab: ${tabId}`);
         }
+        tabsContainer.style.gridTemplateColumns = `repeat(${tabsContainer.children.length}, minmax(0, 1fr))`;
 
         // Logic: Create the content container if it doesn't exist.
         if (!document.getElementById(`tab-content-${tabId}`)) {
@@ -524,7 +537,6 @@
 
     console.log("[GeoFS-V3.9_Core-Library] >> Core foundations loaded and ready.");
     if (window.V39_NOTIF) window.V39_NOTIF.success("GeoFS-V3.9_Core-Library Loaded.");
-})();
 
 /**
  * GeoFS-V3.9 Aircraft Technical Registry
@@ -603,3 +615,4 @@ window.AIRCRAFT_DATA = {
     "5791": { "name": "Lockheed C-5M Galaxy", "maxFlaps": 5, "hasGear": true, "hasSpoilers": true, "oew": 172370, "mtow": 381000, "maxFuel": 150800 },
     "5847": { "name": "Boeing 727-200", "maxFlaps": 8, "hasGear": true, "hasSpoilers": true, "oew": 45360, "mtow": 95000, "maxFuel": 30600 }
 };
+})();

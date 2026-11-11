@@ -4,6 +4,14 @@ All notable changes, architectural utilities, and version releases for GeoFS-V3.
 
 ---
 
+## [Unreleased]
+
+### Changed
+
+- **HUD Tab Order**: Keep Information, Fuel, Checklist, and Realism tabs in a consistent order and size the row to the modules present.
+
+---
+
 ## [2.0.1] - Error Boundary Wrappers And Draggable Engine
 
 ### Added
